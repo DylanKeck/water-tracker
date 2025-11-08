@@ -1,0 +1,12 @@
+#.idea
+#.DS_Store
+#node_modules
+
+.DS_Store
+.idea
+node_modules
+project.env
+.flowbite-react
+.react-router
+/frontend/.env.development
+frontend/.env.development
