@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CircularProgressBar from "../components/progress";
+import {redirect, useNavigate} from "react-router";
 
 type Activity = {
     id: number;
@@ -96,6 +97,10 @@ export default function Dashboard() {
             return prev;
         });
     };
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        navigate("/login");
+    }
 
     const getDayLabel = (d: Date) => d.toLocaleDateString("en-US", {weekday: "short"});
     const weeklyTotals: { date: Date; total: number }[] = Array.from({length: 7}).map((_, i) => {
@@ -147,7 +152,8 @@ export default function Dashboard() {
 
                 <div className="absolute right-4 top-4 md:right-8 md:top-6">
                     <button
-                        className="rounded-lg bg-gradient-to-r from-cyan-600 to-sky-600 px-3 py-1.5 text-sm sm:text-base text-white shadow hover:from-cyan-500 hover:to-sky-500 transition">
+                        className="rounded-lg bg-gradient-to-r from-cyan-600 to-sky-600 px-3 py-1.5 text-sm sm:text-base text-white shadow hover:from-cyan-500 hover:to-sky-500 transition"
+                    onClick={handleLogout}>
                         Sign Out
                     </button>
                 </div>
@@ -179,7 +185,7 @@ export default function Dashboard() {
                                             </p>
                                         </div>
                                         <button
-                                            className="rounded-lg bg-gradient-to-r from-cyan-600 to-sky-600 px-3 py-2 text-sm text-white shadow hover:from-cyan-500 hover:to-sky-500 transition sm:px-4 sm:py-3"
+                                            className="rounded-lg bg-gradient-to-r from-cyan-600 to-sky-600 px-3 py-2 text-sm text-white shadow hover:from-cyan-500 hover:to-sky-500 transition sm:px-4 sm:py-3 hover:cursor-pointer"
                                             onClick={() => logActivity(activity)}
                                         >
                                             Log
@@ -191,7 +197,7 @@ export default function Dashboard() {
                             {/* Dropdown for additional activities */}
                             {activities.length > 4 && (
                                 <div
-                                    className="my-2 w-full rounded-2xl border border-sky-400/30 bg-sky-900/30 p-3 shadow-sm">
+                                    className="my-2 w-full rounded-2xl border border-sky-400/30 bg-sky-900/30 p-2 shadow-sm">
                                     <div className="grid grid-cols-3 items-center gap-3">
                                         <div className="col-span-2">
                                             <label className="block text-sm font-semibold text-sky-100/90">
@@ -211,7 +217,7 @@ export default function Dashboard() {
                                             </select>
                                         </div>
                                         <button
-                                            className="rounded-lg bg-gradient-to-r from-cyan-600 to-sky-600 px-3 py-2 text-sm text-white shadow hover:from-cyan-500 hover:to-sky-500 transition sm:px-4 sm:py-3"
+                                            className="rounded-lg bg-gradient-to-r from-cyan-600 to-sky-600 px-3 py-2 text-sm text-white shadow hover:from-cyan-500 hover:to-sky-500 transition sm:px-4 sm:py-3 hover:cursor-pointer"
                                             onClick={() => {
                                                 if (!selectedExtraId) return;
                                                 const act = activities.find((a) => a.id === selectedExtraId);
@@ -239,7 +245,7 @@ export default function Dashboard() {
                                 aggregatedToday.map((activity) => (
                                     <div
                                         key={activity.id}
-                                        className={`my-2 w-full rounded-2xl border p-3 shadow-sm ${
+                                        className={`my-2 w-full rounded-2xl border p-2 shadow-sm ${
                                             overBudget
                                                 ? "border-rose-400/40 bg-rose-900/20"
                                                 : "border-sky-400/30 bg-sky-900/30"
@@ -255,7 +261,7 @@ export default function Dashboard() {
                                                 </p>
                                             </div>
                                             <button
-                                                className="rounded-lg bg-gradient-to-r from-rose-500 to-rose-600 px-3 py-2 text-sm text-white shadow hover:from-rose-400 hover:to-rose-500 transition sm:px-4 sm:py-3"
+                                                className="rounded-lg bg-gradient-to-r from-rose-500 to-rose-600 px-3 py-2 text-sm text-white shadow hover:from-rose-400 hover:to-rose-500 transition sm:px-4 sm:py-3 hover:cursor-pointer"
                                                 onClick={() => removeActivity(activity.id)}
                                             >
                                                 Remove
