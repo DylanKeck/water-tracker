@@ -1,13 +1,18 @@
+DROP TABLE IF EXISTS profile;
+
 CREATE EXTENSION IF NOT EXISTS pg_uuidv7;
 
 -- Create profiles table
 CREATE TABLE IF NOT EXISTS profile (
                                         profile_id UUID PRIMARY KEY DEFAULT uuid_generate_v7(),
-                                        profile_username VARCHAR(20) NOT NULL,
+                                        profile_base_goal_liters INT DEFAULT 110,
+                                        profile_created_at TIMESTAMPTZ DEFAULT NOW(),
                                         profile_email VARCHAR(255) NOT NULL,
                                         profile_password_hash TEXT NOT NULL,
-                                        profile_created_at TIMESTAMPTZ DEFAULT NOW()
+                                        profile_reduction_percent INT DEFAULT 0,
+                                        profile_username VARCHAR(20) NOT NULL
 );
+alter table profile add constraint profile_email_unique unique (profile_email);
 
 -- Create unique indexes
 CREATE UNIQUE INDEX IF NOT EXISTS idx_profiles_username ON profile(profile_username);
