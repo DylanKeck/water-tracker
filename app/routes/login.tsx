@@ -179,7 +179,7 @@ export default function Login() {
                     {/* Heading */}
                     <div className="text-center">
                         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-                            Welcome to <span className="bg-gradient-to-r from-cyan-300 to-sky-400 bg-clip-text text-transparent">Water Tracker</span>
+                            Welcome to <span className="bg-gradient-to-r from-cyan-300 to-sky-400 bg-clip-text text-transparent">Splish</span>
                         </h1>
                         <p className="text-sky-200/70 text-sm mt-1">Sign in to continue</p>
                     </div>

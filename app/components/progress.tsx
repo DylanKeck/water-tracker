@@ -58,7 +58,7 @@ const CircularProgressBar: React.FC<Props> = ({ percentage = 0, centerLabel }) =
             </svg>
 
             {/* Centered label: use provided centerLabel or default to percent */}
-            <div className="absolute inset-0 flex items-center justify-center lg:3xl text-xl font-semibold pointer-events-none">
+            <div className="absolute inset-0 flex items-center justify-center lg:text-2xl text-xl font-semibold pointer-events-none">
                 {centerLabel ?? `${Math.round(progress)}%`}
             </div>
         </div>

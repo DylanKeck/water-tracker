@@ -111,7 +111,7 @@ export default function Signup() {
                         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
                             Create your{" "}
                             <span className="bg-gradient-to-r from-cyan-300 to-sky-400 bg-clip-text text-transparent">
-                Water Tracker
+                Splish
               </span>{" "}
                             account
                         </h1>

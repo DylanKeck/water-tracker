@@ -278,7 +278,7 @@ export default function Dashboard() {
             {/* WEEKLY VIEW */}
             <div className="relative z-10 shrink-0 mx-auto w-11/12 md:w-3/4 pb-3">
                 <h2 className="mb-1 text-center text-base font-semibold sm:text-lg">
-                    Past 7 Days
+                Gallons used in past 7 days:
                 </h2>
                 <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
                     {weeklyTotals.map(({date, total}) => (
@@ -296,7 +296,7 @@ export default function Dashboard() {
                                 className="h-14 w-14 cursor-pointer sm:h-16 sm:w-16"
                             >
                                 <CircularProgressBar
-                                    percentage={Math.min(100, (total / budget) * 100)}
+                                    percentage={((total / budget) * 100)}
                                     centerLabel={total}
                                 />
                             </div>
